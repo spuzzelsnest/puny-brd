@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link rel="stylesheet" href=https://pyscript.net/alpha/pyscript.css />
+  <script defer src=https://pyscript.net/alpha/pyscript.js></script>
+ </head>
+ <body>
+    <b><p>Today: <u><label id="today"></label></u></p></b>
+    <py-env>
+       - pyunifi
+       - selenium
+       - paths:
+           - /config.py
+    </py-env>
+    <py-script>
+from config import *
+import datetime as dt
+clear_cache()
+
+pyscript.write('today', dt.date.today().strftime('%A %B %d, %y'))
+
+unifi_info()
+     </py-script>
+ </body>
+</html>

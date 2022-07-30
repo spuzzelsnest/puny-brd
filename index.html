@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+  <link rel="stylesheet" href="mainStyle.css">
   <link rel="stylesheet" href=https://pyscript.net/alpha/pyscript.css />
   <script defer src=https://pyscript.net/alpha/pyscript.js></script>
  </head>
  <body>
-    <b><p>Today: <u><label id="today"></label></u></p></b>
+    <div id="TitleDiv">
+       <h1><b><u>Puni-Brd version 1</u></b></h1>
+       <label id="today"></label>
+    </div>
+    <div class="Category">
+        <p><b><u>System Specs</u></b></p>
+       <label id="sysSpecs"></label>
+    </div>
+    <div class="Category">
+        <p><b><u>Wifi Controller info</u></b></p>
+        <label id="unifi"></label>
+     </div>
     <py-env>
+       - ssl
        - python-dotenv
        - pyunifi
        - selenium
        - paths:
            - /.env
            - /config.py
+           - /unifiInfo.py
     </py-env>
     <py-script>
 from config import *
 import datetime as dt
-clear_cache()
-
 pyscript.write('today', dt.date.today().strftime('%A %B %d, %y'))
+sys_specs()
 
-unifi_info()
+pyscript.write('unifi', "Unifi info")
+
      </py-script>
  </body>
 </html>

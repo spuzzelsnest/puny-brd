@@ -24,7 +24,7 @@ def clear_cache():
 
 def unifi_info():
    print("start unifi info from host "+ C_HOST)
-   c = Controller(str(C_HOST), C_User, C_Pass, port='8443', ssl_verify=False, version='UDMP-unifiOS')
+   c = Controller(str(C_HOST), C_User, C_Pass, port=C_PORT, ssl_verify=False, version='UDMP-unifiOS')
    
    #for ap in c.get_aps():
    #   print('AP named %s with MAC %s' % (ap.get('name'), ap['mac']))

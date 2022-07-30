@@ -7,9 +7,11 @@
  <body>
     <b><p>Today: <u><label id="today"></label></u></p></b>
     <py-env>
+       - python-dotenv
        - pyunifi
        - selenium
        - paths:
+           - /.env
            - /config.py
     </py-env>
     <py-script>

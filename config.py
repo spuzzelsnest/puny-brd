@@ -1,14 +1,21 @@
 #requirements: pip3 install pyunifi selenium
+import os, sys
 from platform import python_version
-import sys
+from dotenv import load_dotenv
 from pyunifi.controller import Controller
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+load_dotenv()
+
+C_HOST = os.getenv('IP_Controller')
+C_PORT = os.getenv('Port')
+C_User = os.getenv('Username')
+C_Pass = os.getenv('Password')
+
 def clear_cache():
-    print("Clear Cache/ Refresh browser")
-    print("Current Python Version-", python_version())
-    print("System Version", sys.version)
+    print("Current Python Version-"+ python_version())
+    print("System Version"+ sys.version)
 
 #    driver = webdriver.Chrome()
 #    driver.get('chrome://settings/clearBrowserData')
@@ -16,8 +23,8 @@ def clear_cache():
 #    driver.refresh()
 
 def unifi_info():
-   print("start unifi info")
-   c = Controller('192.168.10.6', 'ubnt', 'ipkJRVAsj2gPcfIz', port='443', ssl_verify=False, version='unifiOS')
-
-   for ap in c.get_aps():
-      print('AP named %s with MAC %s' % (ap.get('name'), ap['mac']))
+   print("start unifi info from host "+ C_HOST)
+   c = Controller(str(C_HOST), C_User, C_Pass, port='8443', ssl_verify=False, version='UDMP-unifiOS')
+   
+   #for ap in c.get_aps():
+   #   print('AP named %s with MAC %s' % (ap.get('name'), ap['mac']))

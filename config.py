@@ -1,10 +1,9 @@
-#requirements: pip3 install pyunifi selenium
-import os, sys, ssl
+#requirements: pip3 install pyunifi
+import os, sys, socket, ssl
 from platform import python_version
 from dotenv import load_dotenv
 from pyunifi.controller import Controller
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+
 
 load_dotenv()
 
@@ -14,9 +13,9 @@ C_USER = os.getenv('Username')
 C_PASS = os.getenv('Password')
 C_VERS = os.getenv('Version')
 
-def sys_specs():
-   print("Current Python Version-"+ python_version())
-   print("System Version"+ sys.version)
+pythonVers = str(python_version())
+SysPythonVers = sys.version
+
 
 def unifi_info():
    print("Start unifi info from host "+ C_HOST +" ,checking version "+ C_VERS) 

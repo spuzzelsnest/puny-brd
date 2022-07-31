@@ -13,29 +13,29 @@
     <div class="Category">
         <p><b><u>System Specs</u></b></p>
        <label id="sysSpecs"></label>
+
     </div>
     <div class="Category">
         <p><b><u>Wifi Controller info</u></b></p>
         <label id="unifi"></label>
+       
      </div>
     <py-env>
        - ssl
        - python-dotenv
        - pyunifi
-       - selenium
        - paths:
            - /.env
            - /config.py
            - /unifiInfo.py
     </py-env>
-    <py-script>
+<py-script>
 from config import *
 import datetime as dt
 pyscript.write('today', dt.date.today().strftime('%A %B %d, %y'))
-sys_specs()
+pyscript.write('sysSpecs', config.pythonVers)
+pyscript.write('unifi', SysPythonVers)
 
-pyscript.write('unifi', "Unifi info")
-
-     </py-script>
+</py-script>
  </body>
 </html>
